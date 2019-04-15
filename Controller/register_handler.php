@@ -63,7 +63,7 @@ if($firstname&&$phone&&$email&&$address&&$postcode){
 }else{
     echo '<p class="error"> please go back and re-enter details please</p>';
 }
-//strips data of malicious code 
+//strips data of malicious code
 function check_data($value) {
     $value = trim($value);
     $value = stripslashes($value);

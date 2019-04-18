@@ -8,11 +8,6 @@
 <body>
 <?php
 
-session_start();
-
-echo $_SESSION['film_chosen'];
-echo $_SESSION['seshtest'];
-
 
 ?>
 </body>

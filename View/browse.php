@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>Browse</title>
-
+<link rel="stylesheet" type="text/css" href="CSS/browseStyle.css">
 </head>
 
 <body>
@@ -10,52 +10,66 @@
 <?php
 include 'layout/header.php';
 require('../Model/dbconnect.php');
-session_start();
+include_once "../Controller/filmController.php";
+
 ?>
 
 <div class="drop_down" style="text-align: center">
     <h1>Browse all films</h1>
 
-
-    <form method="POST" action="film_details.php">
-
-        <?php
-
-$get_all_films = "SELECT filmtitle AS Films FROM fss_film ORDER BY filmtitle ASC";//all film query
-$display_all_films = @mysqli_query($conn, $get_all_films);
-    //retrieve data
-$film_option = "<select name='film'>";
-    while($row = mysqli_fetch_assoc($display_all_films)){//assigns a row to a film
-        $film_option .= "<option value='{$row['Films']}'> {$row['Films']}</option>";
-
-    }
-echo $film_option;
-$film_option .= "</select>";
+    <form method="POST">
+<?php
+//display fucntion
+$chosen = "";//set variable to empty
+echo $filmDropDown;
 
 
-mysqli_close($conn);//close the connection when finished
+
+//mysqli_close($conn);//close the connection when finished
 ?>
         <input type="submit" name="submit" value= "Select film" />
+        <button type="button" name="AddBasket">Add to your basket</button>
     </form>
     <?php
-    if ($_SERVER["REQUEST_METHOD"]== "POST"){
+    if ($_SERVER["REQUEST_METHOD"]== "POST") {//
         $chosen = ($_POST['film']);//select option assigned variable
-        echo $chosen;
 
-    }else{
-        echo 'broken';
-    }
+    }//sql queries
 
-    ?>
 
+
+
+    $getPrice = "SELECT price FROM fss_filmpurchase 
+        JOIN fss_film ON fss_filmpurchase.filmid = fss_film.filmid
+        WHERE fss_film.filmtitle = \"$chosen\" ORDER BY fss_filmpurchase.payid DESC LIMIT 1";//all film query
+    $displayPrice = mysqli_query($conn, $getPrice);
+    $priceRow = $displayPrice->fetch_assoc();
+
+    $getRating = "SELECT filmrating FROM fss_rating 
+        JOIN fss_film ON fss_film.ratid = fss_rating.ratid
+        WHERE fss_film.filmtitle = \"$chosen\"";
+    $displayRating =mysqli_query($conn,$getRating);
+    $ratingRow =$displayRating->fetch_assoc();
+
+
+
+        ?>
 </div>
-<?php
-$test='test';
+<ul>
 
-$_SESSION['film_chosen'] = $chosen;
-$_SESSION['seshtest'] = $test;
-?>
+    <li class="filmName"> <?php  echo 'Film Selected: ' .$chosen ?></li>
+    <div class=" filmDescDiv ">
+        <li class="filmDesc"> <div class="filmDescDiv2"><p style="text-decoration: underline"> Film description
+                </p><?php echo $desc?></li>
+    </div>
+    <div class=" filmPriceDiv ">
+        <li class="filmPrice"> <?php echo 'Film Price: £' .$priceRow['price']?></li>
+     </div>
+    <div class=" filmRatingDiv ">
+        <li class="filmRating"> <?php echo 'Film rating: ' .$ratingRow['filmrating']?></li>
+    </div>
 
+</ul>
 
 </body>
 </html>

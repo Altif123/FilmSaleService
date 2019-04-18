@@ -10,8 +10,8 @@
 
 include 'layout/header.php';
 ?>
-<h1> Register here </h1>
-<form action= "../Controller/register_handler.php" method="POST">
+<h1> Edit details here </h1>
+<form action= "../Controller/editDetailsHandler.php" method="POST">
 
     Name:<br>
     <input type="text" name = "firstname" minlength="2" maxlength="35" ><br>
@@ -22,6 +22,12 @@ include 'layout/header.php';
 
     Email:<br>
     <input type="email" name = "email_register" size="20" minlength="5" maxlength="60" ><br>
+
+    Password:<br>
+    <input type="password" name = "password1" size="20" minlength="5" maxlength="60" ><br>
+
+    Confirm Password:<br>
+    <input type="password" name = "password2" size="20" minlength="5" maxlength="60" ><br>
 
     Address:<br>
     <input type="text" name = "address" minlength="5" maxlength="50" ><br>

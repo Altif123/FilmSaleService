@@ -1,0 +1,47 @@
+ul{
+   text-align: center;
+   list-style: none;
+}
+.drop_down{
+   font-family: Calibri, serif;
+
+
+}
+.filmDescDiv{
+   text-align: justify;
+   position: center;
+   width: 300px;
+   padding:10px;
+   border: 15px solid green;
+   margin-left: 570px;
+}
+.filmPriceDiv{
+   position: center;
+   width: 200px;
+   border: 15px solid blue;
+   margin-left: 625px;
+}
+.filmRatingDiv{
+   position: center;
+   width: 200px;
+   border: 15px solid yellow;
+   margin-left: 625px;
+}
+li.filmName{
+   font-size: 40px;
+   text-decoration: underline;
+   font-family: Calibri, serif ;
+}
+li.filmDesc{
+   font-size: 20px;
+   font-family:Calibri, serif  ;
+
+}
+li.filmPrice{
+   font-size: 20px;
+   font-family: Calibri, serif ;
+}
+li.filmRating{
+   font-size: 20px;
+   font-family: Calibri, serif ;
+}

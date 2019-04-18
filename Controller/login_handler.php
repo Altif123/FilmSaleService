@@ -20,15 +20,15 @@ echo $_POST["email_login"];//used for testing
  */
 
 //validate email
-if(!empty($_REQUEST['email_login'])){
-    $email = $_REQUEST['email_login'];
+if(!empty($_POST['email_login'])){
+    $email = $_POST['email_login'];
 }else{
     $email = NULL;
     echo '<p class="error"> Please enter email address</p>';
 }
 //validate password if password missing
-if(!empty($_REQUEST['password'])){
-    $password = $_REQUEST['password'];
+if(!empty($_POST['password'])){
+    $password = $_POST['password'];
 }else{
     $password = NULL;
     echo '<p class="error"> Please enter password </p>';

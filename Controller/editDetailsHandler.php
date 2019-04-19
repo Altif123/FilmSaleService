@@ -22,7 +22,7 @@ function check_data($value)
 if (empty($_POST['firstname'])) {
     $fName = "";
     $nameErr = '<p class="error"> you must enter a first name</p>';
-} else if (!preg_match("/^[a-zA-Z]*$/", $_POST['firstname'])) {
+} else if (preg_match("/^[a-zA-Z]*$/", $_POST['firstname'])) {
     $nameErr = '<p class="error"> name can only contain letters  </p>';
 } else {
     $fName = check_data($_POST['firstname']);

@@ -29,8 +29,12 @@ echo $filmDropDown;
     <?php
     if ($_SERVER["REQUEST_METHOD"]== "POST") {//
         $chosen = ($_POST['film']);//select option assigned variable
-        //sql queries
-    }?>
+
+    //sql queries
+
+
+
+        }?>
 </div>
 <ul>
 

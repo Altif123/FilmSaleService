@@ -9,6 +9,7 @@ require_once "../Model/DAO.php";
 class CustomerDAO extends DAO{
 
 public function registerDetails($fName,$phone,$email,$address,$city,$postcode){
+
     $conn = new mysqli('localhost', 'root', '', 'filmsaleservice');
     $insertPersonName = "INSERT INTO fss_Person (personname,personphone,personemail)VALUES ('$fName','$phone','$email')";
     if (mysqli_query($conn, $insertPersonName)) {

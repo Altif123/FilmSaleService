@@ -13,6 +13,7 @@ class FilmDAO extends DAO {
 
     public function getAllFilmDesc($chosen)
     {
+
         //$dao = new DAO();
         $conn = new mysqli('localhost', 'root', '', 'filmsaleservice');
        // $conn = $dao->dbConnection();
@@ -32,15 +33,13 @@ class FilmDAO extends DAO {
         $ratingRow =$displayRating->fetch_assoc();
         return $ratingRow["filmrating"];
 
-
-
     }
     public function getPrice($chosen){
 
         $conn = new mysqli('localhost', 'root', '', 'filmsaleservice');
         $getPrice = "SELECT price FROM fss_filmpurchase 
         JOIN fss_film ON fss_filmpurchase.filmid = fss_film.filmid
-        WHERE fss_film.filmtitle = \"$chosen\" ORDER BY fss_filmpurchase.payid DESC LIMIT 1";//all film query
+        WHERE fss_film.filmtitle = \"$chosen\" ORDER BY fss_filmpurchase.payid ASC LIMIT 1";//all film query
         $displayPrice = mysqli_query($conn, $getPrice);
         $priceRow = $displayPrice->fetch_assoc();
         return $priceRow["price"];

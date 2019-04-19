@@ -34,7 +34,7 @@ echo $filmDropDown;
 </div>
 <ul>
 
-    <li class="filmName"> <?php  echo 'Film Selected: ' .($_POST['film']) ?></li>
+    <li class="filmName"> <?php  echo 'Film Selected: ' .$chosen ?></li>
     <div class=" filmDescDiv ">
         <li class="filmDesc"> <div class="filmDescDiv2"><p style="text-decoration: underline"> Film description
                 </p><?php echo $desc?></li>

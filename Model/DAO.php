@@ -6,15 +6,15 @@
  * Time: 14:02
  */
 
-abstract class DAO {
-
-    public $conn;
+class DAO {
 
 public function dbConnection(){
-
+$host="localhost";
+$username="root";
+$password="";
+$dbname="filmsaleservice";
     try {
-        $conn = new mysqli('localhost', 'root', '', 'filmsalesservice');
-        //$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+         new mysqli($host, $username, $password, $dbname);
 
     } catch (PDOException $exception) {
         echo "sorry, connection can't be made" . $exception->getMessage();

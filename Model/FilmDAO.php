@@ -5,13 +5,17 @@
  * Date: 17/04/2019
  * Time: 14:07
  */
-require_once "../Model/DAO.php";
+include "../Model/DAO.php";
 
 class FilmDAO extends DAO {
 
+
+
     public function getAllFilmDesc($chosen)
     {
+        //$dao = new DAO();
         $conn = new mysqli('localhost', 'root', '', 'filmsaleservice');
+       // $conn = $dao->dbConnection();
         $sql = "SELECT filmdescription FROM fss_Film WHERE fss_Film.filmtitle = '$chosen'";//all film query
         $displayDesc = mysqli_query($conn, $sql);
         $descRow = $displayDesc->fetch_assoc();
@@ -44,7 +48,7 @@ class FilmDAO extends DAO {
     //display all films as dropdown
     public function getAllFilmTitle()
     {
-        global $option;
+
         $conn = new mysqli('localhost', 'root', '', 'filmsaleservice');
         $get_all_films = "SELECT filmtitle AS Films FROM fss_film ORDER BY filmtitle ASC";//all film query
         $display_all_films = @mysqli_query($conn, $get_all_films);

@@ -40,6 +40,7 @@
     <a href="/webintegration/View/login.php">Login</a>
     <a href="/webintegration/View/browse.php">Browse</a>
     <a href="/webintegration/View/editDetailsView.php" >Edit details</a>
+    <a href="/webintegration/View/accountView.php" >Account</a>
 
 
 </div>

@@ -21,10 +21,10 @@ include 'layout/header.php';
     <input type="text" name = "phone" minlength="2" maxlength="35"  ><br>
 
     Password:<br>
-    <input type="password" name = "password1" minlength="2" maxlength="35"  ><br>
+    <input type="text" name = "password1" minlength="2" maxlength="35"  ><br>
 
     Confirm password:<br>
-    <input type="password" name = "password2" minlength="2" maxlength="35"  ><br>
+    <input type="text" name = "password2" minlength="2" maxlength="35"  ><br>
 
     Email:<br>
     <input type="email" name = "email_register" size="20" minlength="5" maxlength="60" ><br>

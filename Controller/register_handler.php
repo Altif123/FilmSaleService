@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <title>login</title>
+    <title>Register</title>
 
 </head>
 <body>
@@ -9,11 +9,12 @@
 <?php //script to handle the register page
 require('../Model/dbconnect.php');
 include_once '../Model/CustomerDAO.php';
+include '../Controller/customerController.php';
 $dao = new CustomerDAO();
 
 
-$fName = $phone = $address = $email = $city = $postcode = "";
-$nameErr = $phoneErr = $emailErr = $addressErr = $cityErr = $postcodeErr = "";
+$fName = $phone = $address =$password1 = $password2 = $email = $city = $postcode = "";
+$nameErr = $phoneErr = $passwordErr =$emailErr = $addressErr = $cityErr = $postcodeErr = "";
 
 //strips data of malicious code
 function check_data($value)
@@ -23,18 +24,29 @@ function check_data($value)
     $value = htmlspecialchars($value);
     return $value;
 }
+//detailsValidation(($_POST['firstname']),($_POST['phone']),($_POST["password1"]),($_POST["password2"]),($_POST['email_register']),($_POST['address']),($_POST['city']),($_POST['postcode']));
+/*
+$namev =$_POST['firstname'] ;
+$phonev= $_POST['phone'];
+$password1v= $_POST["password1"];
+$password2v=$_POST["password2"];
+$emailv=$_POST['email_register'];
+$addressv=$_POST['address'] ;
+$cityv=$_POST['city'];
+$postcodev=$_POST['postcode'] ;
 
+//detailsValidation($namev,$phonev,$password1v,$password2v,$emailv,$addressv,$cityv,$pistcosev);
+*/
 
 //validate first name
 if (empty($_POST['firstname'])) {
     $fName = "";
     $nameErr = '<p class="error"> you must enter a first name</p>';
-} else if (!preg_match("/^[a-zA-Z]*$/", $_POST['firstname'])) {
+} else if (!preg_match("/^[a-zA-Z_ ]*$/", $_POST['firstname'])) {
     $nameErr = '<p class="error"> name can only contain letters  </p>';
 } else {
     $fName = check_data($_POST['firstname']);
 }
-
 
 //validate phone
 if (empty($_POST['phone'])){
@@ -45,6 +57,30 @@ if (empty($_POST['phone'])){
 }else{
     $phone = check_data($_POST['phone']);
 }
+
+//password validation
+if(!empty($_POST["password1"])) {
+    if (!empty($_POST["password2"])){
+        if(strlen($_POST["password1"]) < '8'){
+            $passwordErr = '<p class="error"> your password must contain 7 characters</p>';
+        } elseif (!preg_match("#[0-9]+#",$_POST["password1"])){
+            $passwordErr = '<p class="error"> Your Password Must Contain At Least 1 number</p>';
+        } elseif (($_POST["password1"] !== $_POST["password2"])) {
+            $passwordErr = '<p class="error">passwords must match</p>';
+        }elseif (($_POST["password1"] == $_POST["password2"])){
+            $password1 = check_data($_POST["password1"]);
+            $password2 = check_data($_POST["password2"]);
+        }
+    }else{
+        $password2 = "";
+        $passwordErr = '<p class="error"> please enter confirm password </p>';
+    }
+
+}else{
+    $password1 = "";
+    $passwordErr = '<p class="error"> please enter password </p>';
+}
+
 
 //validate email
 if (!empty($_POST['email_register'])) {
@@ -77,56 +113,23 @@ if (!empty($_POST['postcode'])) {
     $postcode = "";
     $postcodeErr = '<p class="error"> Please enter post code</p>';
 }
-//password validation
-if (($_POST["password1"] == $_POST["password2"])) {
-    $password1 = check_data($_POST["password1"]);
-    $password2 = check_data($_POST["password2"]);
-}elseif( strlen($_POST["password1"]) <= '8' ){
-    $passwordErr = '<p class="error"> your password must contain 8 characters</p>';
-}elseif ( !preg_match("#[a-zA-Z]+#",$_POST["password1"],$_POST["password2"] )){
-    $passwordErr = '<p class="error"> Your Password Must Contain At Least 1 Lowercase Letter</p>';
-}elseif(empty($_POST["password1"])){
-
-}
-else{
-    $passwordErr = '<p class="error">passwords must match</p>';
-}
-
-/*if(($_POST["password1"] == $_POST["password2"])) {
-    $password1 = check_data($_POST["password1"]);
-    $password2 = check_data($_POST["password2"]);
-    if (strlen($_POST["password1"]) <= '8') {
-        $passwordErr = '<p class="error"> your password must contain 8 characters</p>';
-    }
-    elseif(!preg_match("#[0-9]+#",$password1)) {
-        $passwordErr = "Your Password Must Contain At Least 1 Number!";
-    }
-
-    elseif(!preg_match("#[a-zA-Z]+#",$password1)) {
-        $passwordErr = '<p class="error"> Your Password Must Contain At Least 1 Lowercase Letter</p>';
-    }
-    elseif (empty($_POST["password1"])){
-        $passwordErr = '<p class="error"> Please enter password</p>';
-    }
-    else{
-        $passwordErr = '<p class="error">passwords must match</p>';
-    }
-*/
-
-
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //insert fields in to DB
 if ($fName && $phone && $address && $email && $city && $postcode!= NULL) {
-    $register = $dao->registerDetails($fName,$phone,$email,$address,$city,$postcode);
+    $register = $dao->registerDetails($fName,$phone,$email,$address,$city,$postcode,$password1);//register function from
     $register;
 
 } else {
     echo '<p class="error"> please go back and re-enter details please</p>';
 }
+
 echo $nameErr;
 echo $phoneErr;
+echo $passwordErr;
+echo $password1;
+echo $password2;
 echo $emailErr;
 echo $addressErr;
 echo $cityErr;

@@ -13,51 +13,72 @@ class CustomerDAO extends DAO
     {
 
         $conn = new mysqli('localhost', 'root', '', 'filmsaleservice');
+
+
+        $insertPersonName = "INSERT INTO fss_person (personname,personphone,personemail)VALUES ('$fName','$phone','$email')";
         $insertAddress = "INSERT INTO fss_address (addstreet,addcity,addpostcode)VALUES ('$address','$city','$postcode')";
-        $insertPersonName = "INSERT INTO fss_Person (personname,personphone,personemail)VALUES ('$fName','$phone','$email')";
 
-        if (mysqli_query($conn, $insertAddress) && mysqli_query($conn, $insertPersonName)) {
-            echo "Your details have now been registerd ";
+
+        if (mysqli_query($conn, $insertAddress)) {
+            echo "Your address has now been registered ";
+            $getAddid = mysqli_insert_id($conn) ;
         } else {
-            echo "error, unable to execute $insertPersonName.$insertAddress" . mysqli_error($conn);
+            echo "error, unable to execute $insertPersonName. . $insertAddress" . mysqli_error($conn);
         }
-
-        $getID = mysqli_insert_id($conn);
+        if (mysqli_query($conn, $insertPersonName)){
+            echo "Your details have now been registered ";
+            $getID =mysqli_insert_id($conn) ;
+        }
+        //$getID = mysqli_insert_id($conn);
         $insertPassword = "INSERT INTO fss_customer (custid,custregdate,custendreg,custpassword)VALUES ('$getID' ,current_date,'','$password')";
         if(mysqli_query($conn, $insertPassword)){
             echo '<p>Password also registered</p>';
         } else {
             echo '<p>error, unable to execute $insertPassword. . mysqli_error($conn)</p>';
         }
+        $insertCustAddress= "INSERT INTO fss_customeraddress (custid,addid) VALUES ('$getID','$getAddid')";
+        if(mysqli_query($conn,$insertCustAddress)){
+            echo '<p>link table updated</p>';
 
-        /*
-            if (mysqli_query($conn, $insertAddress)) {
-                echo "address records added";
-            } else {
-                echo "error, unable to execute $insertAddress." . mysqli_error($conn);
-            }
-            echo '<p>Thank your details have been validated </p>';
-        */
-        /*
-            $getID = mysqli_insert_id($conn);
-            $insertPassword = "INSERT INTO fss_customer (custid,custregdate,custendreg,custpassword)VALUES ('$getID' ,current_date,'','$password')";
-
-            if (mysqli_query($conn, $insertPassword)) {
-                echo "password records added";
-            } else {
-                echo "error, unable to execute $insertPassword." . mysqli_error($conn);
-            }
-            echo '<p>Thank you your details have been validated </p>';
         }
-        */
-
-
-
 
     }
     //update query
 
+public function previousOrders(){
+    $conn = new mysqli('localhost', 'root', '', 'filmsaleservice');
 
+
+    $displayQuery ="SELECT pers.personname AS 'Name',filmpurch.payid AS 'Payment Number',film.filmtitle AS 'Film Title'
+FROM fss_Person pers
+JOIN fss_OnlinePayment AS onlinepay
+ON pers.personid = onlinepay.custid
+JOIN fss_FilmPurchase AS filmpurch
+ON filmpurch.payid = onlinepay.payid
+JOIN fss_Film AS film
+ON filmpurch.filmid = film.filmid
+WHERE pers.personemail = 'melissa.dejesus@home.co.uk'
+GROUP BY film.filmtitle";
+    $displayPrevOrders = mysqli_query($conn,$displayQuery);
+
+    echo "<table> 
+    <tr> 
+    <th>Payment id</th>
+    <th>Film Title</th>
+    </tr>" ;
+    if (mysqli_num_rows($displayPrevOrders) > 0) {
+        // output data of each row
+        while($row = mysqli_fetch_array($displayPrevOrders,MYSQLI_ASSOC)) {
+            echo "<tr>";
+            echo "<td>" .$row['Payment Number']. "</td>";
+            echo "<td>" .$row['Film Title']."</td>";
+            echo "<tr>";
+        }
+    } else {
+        echo "0 results";
+    }
+
+}
 }
 
 

@@ -59,7 +59,6 @@ class FilmDAO extends DAO {
         }
 
         $film_option .= "</select>";
-        $option =$film_option;
         return $film_option;
 
 

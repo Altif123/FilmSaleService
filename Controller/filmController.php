@@ -9,8 +9,13 @@ include_once '../Model/FilmDAO.php';
 
 
 //calls - sql queries
+
+
     $chosen = ($_POST['film']);
+
+
     $dao = new FilmDAO();
+
     $desc = $dao->getAllFilmDesc($chosen);
     $filmDropDown = $dao->getAllFilmTitle();
     $price = $dao->getPrice($chosen);

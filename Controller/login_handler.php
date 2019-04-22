@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <title>login</title>
+<?php include_once '../View/layout/header.php'  ?>
 
 </head>
 <body>
@@ -10,7 +10,7 @@
 
 <?php
 echo $_POST["email_login"];//used for testing
-
+session_start();
 
 /*check if form items empty
  * if the form item not empty
@@ -26,6 +26,7 @@ if(!empty($_POST['email_login'])){
     $email = NULL;
     echo '<p class="error"> Please enter email address</p>';
 }
+$_SESSION['user_id'] = $email ;
 //validate password if password missing
 if(!empty($_POST['password'])){
     $password = $_POST['password'];
@@ -41,7 +42,7 @@ if (strlen($_POST["password"]) < '5') {
     }
 
 else{
-
+//validation query password must be indata base if not please register
 
 
 }

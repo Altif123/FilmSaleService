@@ -12,7 +12,7 @@ include 'layout/header.php';
 <form action= "../View/editDetailsView.php" method="POST">
     <input type="submit" value="edit details">
 </form>
-<form action= "../View/" method="POST">
+<form action= "../View/ordersView.php" method="POST">
     <input type="submit" value="view orders">
 </form>
 <form action= "../View/" method="POST">

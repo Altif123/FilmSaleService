@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Account</title>
+    <link rel="stylesheet" type="text/css" href="CSS/accountView.css">
 </head>
 <body>
 <?php
 include 'layout/header.php';
 ?>
-<h1> Account information </h1>
-<form action= "../View/editDetailsView.php" method="POST">
-    <input type="submit" value="edit details">
-</form>
-<form action= "../View/ordersView.php" method="POST">
-    <input type="submit" value="view orders">
-</form>
-<form action= "../View/" method="POST">
-    <input type="submit" value="Add/Change payment details">
-</form>
+<div class="buttonsdiv">
+<a href="editDetailsView.php" <button class="btn btnEdit"> Edit Detail </button>
+<a href="ordersView.php" <button class="btn btnViewOrders"> View previous orders </button>
+<a href="login.php" <button class="btn btnaddPayment"> Add/Change payment details </button>
+</div>
+
 
 <?php
 

@@ -3,43 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="CSS/editDetailsStyle.css">
 </head>
 <body>
 <?php
 
 
 include 'layout/header.php';
+include '../Controller/editDetailsController.php'
 ?>
 <h1> Edit details here </h1>
 <form action= "../Controller/editDetailsHandler.php" method="POST">
-
-    Name:<br>
-    <input type="text" name = "firstnameUpdate" minlength="2" maxlength="35" ><br>
+<div class="label">
 
 
-    Phone:<br>
-    <input type="text" name = "phoneUpdate" minlength="2" maxlength="35"  ><br>
+    <label>Name:<br></label>
+    <input type="text" name = "firstnameUpdate" minlength="2" maxlength="35" placeholder=" <?php echo $getName1?> "><br>
 
-    Email:<br>
-    <input type="email" name = "email_registerUpdate" size="20" minlength="5" maxlength="60" ><br>
 
-    Password:<br>
-    <input type="password" name = "password1Update" size="20" minlength="5" maxlength="60" ><br>
+    <label>Phone:<br></label>
+    <input type="text" name = "phoneUpdate" minlength="2" maxlength="35"placeholder="<?php echo $getPhone1?> "><br>
 
-    Confirm Password:<br>
+    <label>Email:<br></label>
+    <input type="email" name = "email_registerUpdate" size="20" minlength="5" maxlength="60" placeholder="<?php echo $getEmail1?> "><br>
+
+    <label>Password:<br></label>
+    <input type="password" name = "password1Update" size="20" minlength="5" maxlength="60"> <br>
+
+    <label>Confirm New Password:<br></label>
     <input type="password" name = "password2Update" size="20" minlength="5" maxlength="60" ><br>
 
-    Address:<br>
-    <input type="text" name = "addressUpdate" minlength="5" maxlength="50" ><br>
+    <label>Address:<br></label>
+    <input type="text" name = "addressUpdate" minlength="5" maxlength="50" placeholder="<?php echo $getStreet1?>" ><br>
 
-    City:<br>
-    <input type="text" name = "cityUpdate" minlength="3" maxlength="50" ><br>
+    <label>City:<br></label>
+    <input type="text" name = "cityUpdate" minlength="3" maxlength="50"  placeholder="<?php echo $getCity1?>" ><br>
 
-    Postcode:<br>
-    <input type="text" name = "postcodeUpdate" minlength="4" maxlength="8" ><br>
+    <label>Postcode:<br></label>
+    <input type="text" name = "postcodeUpdate" minlength="4" maxlength="8" placeholder="<?php echo $getPostcode1?>" ><br>
 
-
-    <input type="submit" value="Save Changes">
+</div>
+    <input type="submit" name="saveBtn" value="Save Changes">
 </form>
 
 <?php

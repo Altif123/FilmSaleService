@@ -5,6 +5,10 @@
  * Date: 17/04/2019
  * Time: 21:29
  */
+include_once '../Model/CustomerDAO.php';
+include_once '../Controller/editDetailsController.php';
+$old = new CustomerDAO();
+
 $fName = $phone = $address =$password1 =$password2 = $email = $city = $postcode = "";
 $nameErr = $phoneErr = $passwordErr =$emailErr = $addressErr = $cityErr = $postcodeErr = "";
 
@@ -99,9 +103,78 @@ if ($fName && $phone && $address && $password1 && $password2 && $email && $city 
 
 //update query
 
-echo $passwordErr;
-echo $phoneErr;
-echo $emailErr;
-echo $addressErr;
-echo $cityErr;
-echo $postcodeErr;
+
+
+//get address where email
+//new
+//person table
+$newName=$_POST['firstnameUpdate'];$newPhone=$_POST['phoneUpdate'];$newEmail=$_POST['email_registerUpdate'];
+$newPass=$_POST['password1Update'];
+//address update
+$newAddress=$_POST['addressUpdate'];$newCity=$_POST['cityUpdate'];$newpostcode=$_POST['postcodeUpdate'];
+
+
+
+//update
+//$updateName1 = $old->updateName($getName1,$newName);
+//old
+//maybe store them as sessions
+//pull from db
+
+//if ($fName && $phone && $address && $password1 && $password2 && $email && $city && $postcode!= NULL) {
+//    if(isset($_POST['saveBtn'])){
+//        $updateName1 = $old->updateName($getName1,$newName);
+//
+//
+//    }
+//
+//} else {
+//    echo '<p class="error"> please go back and re-enter details please</p>';
+//}
+if($fName!=""){
+    $updateName1 = $old->updateName($newName);
+}else{
+    echo $nameErr;
+}
+if($phone&&$phoneErr!=""){
+    $updatePhone1 = $old->updatePhone($newPhone);
+}else{
+    echo $phoneErr;
+}
+if($email!=""){
+    $updateEmail1 = $old->updateEmail($newEmail);
+}else{
+    echo $emailErr;
+}
+if($passwordErr!=NULL){
+    $updatePass1 = $old->updatePassword($newPass);
+
+}else{
+    echo $passwordErr;
+}
+if($address!=NULL){
+    $updateAdd1 = $old->updateAddress($newAddress);
+
+}else{
+    echo $addressErr;
+}
+if($city!=NULL){
+    $updateCity1 = $old->updateCity($newCity);
+
+}else{
+    echo $cityErr;
+}
+if($postcode!=NULL){
+    $updatePostcode1 = $old->updatePostcode($newpostcode);
+
+}else{
+    echo $postcodeErr;
+}
+
+
+//echo $passwordErr;
+//echo $phoneErr;
+//echo $emailErr;
+//echo $addressErr;
+//echo $cityErr;
+//echo $postcodeErr;

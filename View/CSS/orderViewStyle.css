@@ -1,4 +1,4 @@
-th,td{
+th,td,tr{
     font-family: Calibri, serif;
     text-align: center;
     border-bottom: 1px black ;
@@ -6,7 +6,8 @@ th,td{
 }
 
 h4{
-    color: cadetblue;
+    color: dodgerblue;
+    text-underline: black;
     margin-left: 10px;
     margin-top: 10px;
     font-family: Calibri, serif;

@@ -9,7 +9,6 @@
 
 <?php
 include 'layout/header.php';
-//require('../Model/dbconnect.php');
 include_once "../Controller/filmController.php";
 
 ?>
@@ -29,11 +28,6 @@ echo $filmDropDown;
     <?php
     if ($_SERVER["REQUEST_METHOD"]== "POST") {//
         $chosen = ($_POST['film']);//select option assigned variable
-
-    //sql queries
-
-
-
         }?>
 </div>
 <ul>

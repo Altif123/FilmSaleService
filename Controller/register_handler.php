@@ -7,9 +7,8 @@
 <body>
 
 <?php //script to handle the register page
-require('../Model/dbconnect.php');
 include_once '../Model/CustomerDAO.php';
-include '../Controller/customerController.php';
+//include '../Controller/customerController.php';
 $dao = new CustomerDAO();
 
 
@@ -117,7 +116,7 @@ if (!empty($_POST['postcode'])) {
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //insert fields in to DB
-if ($fName && $phone && $address && $email && $city && $postcode!= NULL) {
+if ($fName && $phone && $address && $password1&&$password2 && $email && $city && $postcode!= NULL) {
     $register = $dao->registerDetails($fName,$phone,$email,$address,$city,$postcode,$password1);//register function from
     $register;
 

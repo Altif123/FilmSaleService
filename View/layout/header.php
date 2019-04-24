@@ -33,18 +33,33 @@
     </style>
 </head>
 <body>
-
+<?php session_start(); ?>
+<?php  if (isset($_SESSION['loggedIn'])==true):
+     ?>
 <div class = "navbar">
     <a href="/webintegration/View/index.php">Home</a>
     <a href="/webintegration/View/register.php">Register</a>
-    <a href="/webintegration/View/login.php">Login</a>
     <a href="/webintegration/View/browse.php">Browse</a>
     <a href="/webintegration/View/editDetailsView.php" >Edit details</a>
     <a href="/webintegration/View/accountView.php" >Account</a>
+    <a href="/webintegration/Controller/logoutController.php">Log out</a>
+    <div class="userid">
 
+    <p style="text-align: right; color: black;padding-right: 10px;font-family: Calibri, serif; font-weight: bold";><?php echo 'logged in: ' . $_SESSION['username']; ?></p>
+
+    </div>
+
+</div>
+<?php else:      ?>
+<div class="navbar">
+    <a href="/webintegration/View/index.php">Home</a>
+    <a href="/webintegration/View/register.php">Register</a>
+    <a href="/webintegration/View/browse.php">Browse</a>
+    <a href="/webintegration/View/login.php">Login</a>
 
 </div>
 
+<?php endif   ?>
 
 
 

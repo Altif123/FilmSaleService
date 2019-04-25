@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
-    <link rel="stylesheet" type="text/css" href="CSS/editDetailsStyle.css">
+    <link rel="stylesheet" type="text/css" href="CSS/formStyle.css">
 </head>
 <body>
 <?php
-
-
 include 'layout/header.php';
-include '../Controller/editDetailsController.php'
+include '../Controller/editDetailsController.php';
+include '../Controller/editDetailsHandler.php';
 ?>
 <h1> Edit details here </h1>
-<form action= "../Controller/editDetailsHandler.php" method="POST">
+<form action= "../View/editDetailsView.php" method="POST">
 <div class="label">
 
 

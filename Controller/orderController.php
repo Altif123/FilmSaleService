@@ -10,3 +10,4 @@ require_once '../Model/CustomerDAO.php';
 $orderDao = new CustomerDAO();
 
 $displayOrders = $orderDao->previousOrders();
+$getTotalOrders = $orderDao->totalOrders();

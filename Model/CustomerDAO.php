@@ -79,7 +79,7 @@ JOIN fss_Film AS film ON filmpurch.filmid = film.filmid
 JOIN fss_payment AS pay ON pay.payid =  filmpurch.payid
 WHERE pers.personemail = '$userEmail '";
     $displayPrevOrders = mysqli_query($conn, $displayQuery);
-
+//crates table
     echo "<table> 
     <tr> 
     <th>Payment id</th>

@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ecd4e153-7205-4ae3-9b08-637b2259d9d1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/editDetailsHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/editDetailsHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/login_handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/login_handler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/orderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/orderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/register_handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/register_handler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Model/CustomerDAO.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/CustomerDAO.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/CSS/accountView.css" beforeDir="false" afterPath="$PROJECT_DIR$/View/CSS/accountView.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/CSS/editDetailsStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/View/CSS/formStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/CSS/orderViewStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/View/CSS/orderViewStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/editDetailsView.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/editDetailsView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/film_details.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/ordersView.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/ordersView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/register.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,8 +38,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Model/CustomerDAO.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="67" column="47" lean-forward="true" selection-start-line="67" selection-start-column="47" selection-end-line="67" selection-end-column="47" />
+            <state relative-caret-position="457">
+              <caret line="81" column="14" selection-start-line="81" selection-start-column="14" selection-end-line="81" selection-end-column="14" />
               <folding>
                 <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
               </folding>
@@ -282,7 +269,7 @@
       <workItem from="1553367917192" duration="38000" />
       <workItem from="1553438749628" duration="1197000" />
       <workItem from="1553535084598" duration="4721000" />
-      <workItem from="1555063082038" duration="377036000" />
+      <workItem from="1555063082038" duration="377401000" />
     </task>
     <task id="LOCAL-00001" summary="updated">
       <created>1555360212442</created>
@@ -333,11 +320,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556146990783</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="login/logout. place holder for update">
+      <created>1556236180352</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1556236180352</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="382992000" />
+    <option name="totallyTimeSpent" value="383357000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -661,8 +655,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Model/CustomerDAO.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="67" column="47" lean-forward="true" selection-start-line="67" selection-start-column="47" selection-end-line="67" selection-end-column="47" />
+        <state relative-caret-position="457">
+          <caret line="81" column="14" selection-start-line="81" selection-start-column="14" selection-end-line="81" selection-end-column="14" />
           <folding>
             <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
           </folding>

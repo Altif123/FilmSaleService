@@ -15,12 +15,9 @@ $host="localhost";
 $username="root";
 $password="";
 $dbname="filmsaleservice";
-    try {
-         new mysqli($host, $username, $password, $dbname);
 
-    } catch (PDOException $exception) {
-        echo "sorry, connection can't be made" . $exception->getMessage();
-    }
+mysqli($host, $username, $password, $dbname);
+
 
 }
 

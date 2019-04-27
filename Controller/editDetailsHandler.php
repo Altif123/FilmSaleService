@@ -9,9 +9,9 @@ include_once '../Model/CustomerDAO.php';
 include_once '../Controller/editDetailsController.php';
 $old = new CustomerDAO();
 
-$fName = $phone = $address =$password1 =$password2 = $email = $city = $postcode = "";
-$nameErr = $phoneErr = $passwordErr =$emailErr = $addressErr = $cityErr = $postcodeErr = "";
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+$fName = $phone = $address = $password1 = $password2 = $email = $city = $postcode = "";
+$nameErr = $phoneErr = $passwordErr = $emailErr = $addressErr = $cityErr = $postcodeErr = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $newName = $_POST['firstnameUpdate'];
     $newPhone = $_POST['phoneUpdate'];
     $newEmail = $_POST['email_registerUpdate'];
@@ -112,48 +112,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 //update details
     if ($nameErr == "") {
         $updateName1 = $old->updateName($newName);
-    } else {
-        echo $nameErr;
     }
     if ($phoneErr == "") {
         $updatePhone1 = $old->updatePhone($newPhone);
-    } else {
-        echo $phoneErr;
     }
     if ($emailErr == "") {
         $updateEmail1 = $old->updateEmail($newEmail);
-    } else {
-        echo $emailErr;
     }
     if ($passwordErr == "") {
         $updatePass1 = $old->updatePassword($newPass);
 
-    } else {
-        echo $passwordErr;
     }
     if ($addressErr == "") {
         $updateAdd1 = $old->updateAddress($newAddress);
 
-    } else {
-        echo $addressErr;
     }
     if ($cityErr == "") {
         $updateCity1 = $old->updateCity($newCity);
 
-    } else {
-        echo $cityErr;
     }
     if ($postcodeErr == "") {
         $updatePostcode1 = $old->updatePostcode($newpostcode);
 
-    } else {
-        echo $postcodeErr;
     }
+
 }
-//echo $nameErr;
-//echo $passwordErr;
-//echo $phoneErr;
-//echo $emailErr;
-//echo $addressErr;
-//echo $cityErr;
-//echo $postcodeErr;

@@ -11,8 +11,8 @@ include_once '../Model/CustomerDAO.php';
 $dao = new CustomerDAO();
 
 
-$fName = $phone = $address =$password1 = $password2 = $email = $city = $postcode = "";
-$nameErr = $phoneErr = $passwordErr =$emailErr = $addressErr = $cityErr = $postcodeErr = "";
+$fName = $phone = $address = $password1 = $password2 = $email = $city = $postcode = "";
+$nameErr = $phoneErr = $passwordErr = $emailErr = $addressErr = $cityErr = $postcodeErr = "";
 
 //strips data of malicious code
 function check_data($value)
@@ -23,7 +23,7 @@ function check_data($value)
     return $value;
 }
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //validate first name
     if (empty($_POST['firstname'])) {
         $fName = "";
@@ -55,6 +55,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 $passwordErr = '<p class="error">passwords must match</p>';
             } elseif (($_POST["password1"] == $_POST["password2"])) {
                 $password1 = check_data($_POST["password1"]);
+                //code to hash password1
+                //$password_encrypted = password_hash($password1, PASSWORD_BCRYPT);
                 $password2 = check_data($_POST["password2"]);
             }
         } else {
@@ -76,7 +78,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $emailErr = '<p class="error"> Please enter email address</p>';
     }
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $email = NULL;
         $emailErr = '<p class="error"> Please double check your email</p>';
+    }
+    if ($dao->checkEmailNotRegistered($_POST['email_register'])) {
+        $email = NULL;
+        $emailErr = '<p class="error"> email already registered</p>';
+
     }
 //validate address
     if (!empty($_POST['address'])) {
@@ -108,14 +116,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $register;
 
     } else {
-        echo '<p class="error"> please go back and re-enter details please</p>';
+        echo '<p class="error" style="font-family: Calibri, serif; font-size:20px; color: orangered "> 
+                Please go back and re-enter details please</p>';
     }
 
 
 }
 //check if email not in use
-
-
 
 
 ?><br>

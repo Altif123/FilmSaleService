@@ -7,8 +7,8 @@
  */
 include "../Model/DAO.php";
 
-class FilmDAO extends DAO {
-
+class FilmDAO extends DAO
+{
 
 
     public function getAllFilmDesc($chosen)
@@ -16,7 +16,7 @@ class FilmDAO extends DAO {
 
         //$dao = new DAO();
         $conn = new mysqli('localhost', 'root', '', 'filmsaleservice');
-       // $conn = $dao->dbConnection();
+        // $conn = $dao->dbConnection();
         $sql = "SELECT filmdescription FROM fss_Film WHERE fss_Film.filmtitle = '$chosen'";//all film query
         $displayDesc = mysqli_query($conn, $sql);
         $descRow = $displayDesc->fetch_assoc();
@@ -24,26 +24,31 @@ class FilmDAO extends DAO {
 
 
     }
-    public function getRating($chosen){
+
+    public function getRating($chosen)
+    {
         $conn = new mysqli('localhost', 'root', '', 'filmsaleservice');
         $getRating = "SELECT filmrating FROM fss_rating 
         JOIN fss_film ON fss_film.ratid = fss_rating.ratid
         WHERE fss_film.filmtitle = \"$chosen\"";
-        $displayRating =mysqli_query($conn,$getRating);
-        $ratingRow =$displayRating->fetch_assoc();
+        $displayRating = mysqli_query($conn, $getRating);
+        $ratingRow = $displayRating->fetch_assoc();
         return $ratingRow["filmrating"];
 
     }
-    public function getPrice($chosen){
+
+    public function getPrice($chosen)
+    {
 
         $conn = new mysqli('localhost', 'root', '', 'filmsaleservice');
         $getPrice = "SELECT price FROM fss_filmpurchase 
         JOIN fss_film ON fss_filmpurchase.filmid = fss_film.filmid
-        WHERE fss_film.filmtitle = \"$chosen\" ORDER BY fss_filmpurchase.payid ASC LIMIT 1";//all film query
+        WHERE fss_film.filmtitle = \"$chosen\" ORDER BY fss_filmpurchase.payid DESC LIMIT 1";//all film query
         $displayPrice = mysqli_query($conn, $getPrice);
         $priceRow = $displayPrice->fetch_assoc();
         return $priceRow["price"];
     }
+
     //display all films as dropdown
     public function getAllFilmTitle()
     {
@@ -53,7 +58,7 @@ class FilmDAO extends DAO {
         $display_all_films = @mysqli_query($conn, $get_all_films);
         //retrieve data
         $film_option = "<select name='film'>";
-        while($row = mysqli_fetch_assoc($display_all_films)){//assigns a row to a film
+        while ($row = mysqli_fetch_assoc($display_all_films)) {//assigns a row to a film
             $film_option .= "<option value='{$row['Films']}'> {$row['Films']}</option>";
 
         }
@@ -62,9 +67,28 @@ class FilmDAO extends DAO {
         return $film_option;
 
 
-
-
-
     }
 
+    public function getFilmId($film)
+    {
+        $conn = new mysqli('localhost', 'root', '', 'filmsaleservice');
+        $getQuery = "SELECT filmid FROM fss_film WHERE filmtitle = '$film'";
+        $getTitle = mysqli_query($conn, $getQuery);
+        $Row = $getTitle->fech_assoc();
+        return $Row['filmid'];
+    }
+
+    public function purchase($filmid, $price, $shopid, $payid)
+    {
+        $basket = $_SESSION['basket'];
+        $conn = new mysqli('localhost', 'root', '', 'filmsaleservice');
+        foreach ($basket as $key => $film) {
+            $film1 = ($basket[$key][0]);
+            $film2 = ($basket[$key][1]);
+            $film3 = ($basket[$key][2]);
+            $query = "INSERT INTO fss_filmpurchase (price, filmid, shopid,payid) VALUES ($price,$filmid ,$shopid,$payid)";
+            mysqli_query($conn, $query);
+        }
+
+    }
 }

@@ -14,9 +14,9 @@ include '../Controller/login_handler.php';
 <h1> Login page </h1>
 <form action="../View/login.php" method="POST">
     Email:<br>
-    <input type="email" name = "email_login" size="20" maxlength="50" ><br>
+    <input type="email" name="email_login" size="20" maxlength="50"><br>
     Password:<br>
-    <input type="password" name = "password" ><br>
+    <input type="password" name="password"><br>
     <input type="submit" value="Submit">
 
 </form>

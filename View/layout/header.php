@@ -27,6 +27,10 @@
             background-color: white;
             color: black;
         }
+        .basket{
+            float: right;
+        }
+
 
 
 
@@ -43,9 +47,11 @@
     <a href="/webintegration/View/editDetailsView.php" >Edit details</a>
     <a href="/webintegration/View/accountView.php" >Account</a>
     <a href="/webintegration/Controller/logoutController.php">Log out</a>
+    <a style="float: right; background-color: cadetblue "  href="/webintegration/View/basketView.php">Basket</a>
+
     <div class="userid">
 
-    <p style="text-align: right; color: black;padding-right: 10px;font-family: Calibri, serif; font-weight: bold";><?php echo 'logged in: ' . $_SESSION['username']; ?></p>
+    <p style="float: right; color: black;padding-right: 10px;font-family: Calibri, serif; font-weight: bold";><?php echo 'logged in: ' . $_SESSION['username']; ?></p>
 
     </div>
 
@@ -53,9 +59,8 @@
 <?php else:      ?>
 <div class="navbar">
     <a href="/webintegration/View/index.php">Home</a>
-    <a href="/webintegration/View/register.php">Register</a>
-    <a href="/webintegration/View/browse.php">Browse</a>
     <a href="/webintegration/View/login.php">Login</a>
+    <a href="/webintegration/View/register.php">Register</a>
 
 </div>
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>login </title>
-<?php include_once '../View/layout/header.php'  ?>
+    <?php include_once '../View/layout/header.php' ?>
 
 </head>
 <body>
@@ -11,7 +11,7 @@
 <?php
 require_once '../Model/CustomerDAO.php';
 $loginDao = new CustomerDAO();
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     echo $_POST["email_login"];//used for testing
@@ -58,6 +58,7 @@ WHERE fss_person.personemail = '$email' AND fss_customer.custpassword = '$passwo
         if (mysqli_num_rows($loginCheck) == 1) {
             $loggedIn = true;
             $_SESSION['loggedIn'] = $loggedIn;
+            header("Location:../View/accountView.php");
             echo '<p style="font-family: Calibri, serif; font-size: 25px">login successful, you can now browse or view your account</p>';
         } else {
             echo '<p>login and password dont match</p>';
@@ -74,11 +75,12 @@ WHERE fss_person.personemail = '$email' AND fss_customer.custpassword = '$passwo
     $_SESSION['username'] = $name;
 
 }
+//create basket fr user
+if (!isset($_SESSION['basket'])) {
+    $_SESSION['basket'] = array();
+}
 
-
-//validation query password must be indata base if not please register
 ?>
-
 
 
 </body>

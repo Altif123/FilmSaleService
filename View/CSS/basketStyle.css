@@ -1,0 +1,23 @@
+h1{
+    font-family: Calibri, serif
+}
+h3{
+    font-family: Calibri, serif;
+    text-decoration: underline;
+    color: cadetblue;
+    text-align: justify;
+    font-size: 40px
+}
+.basketI{
+    font-family: Calibri, serif;
+    font-size: 20px;
+
+
+}
+table{
+    font-family: Calibri, serif;
+    text-align: justify-all;
+    border-bottom: 3px black ;
+    text-underline: black;
+
+}
